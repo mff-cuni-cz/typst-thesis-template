@@ -1,7 +1,5 @@
 #import "settings.typ": *
 
-#import "@preview/muchpdf:0.1.0": muchpdf
-
 #align(center)[
   #pad(left: 10em, image("logo-en.svg", width: 150%))
 
