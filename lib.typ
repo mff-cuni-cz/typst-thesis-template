@@ -189,6 +189,7 @@
 
   show heading.where(level: 5): it => {
     v(1em, weak: true)
+    set par(leading: 0.3em)
     smallcaps(strong(it.body))
     v(1em, weak: true)
   }
