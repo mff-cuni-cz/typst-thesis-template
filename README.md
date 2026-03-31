@@ -29,7 +29,7 @@ All thesis metadata is set via named parameters on `mff-thesis` in `template/the
 | `defense-date`          | `datetime` | Declaration date (defaults to today)                  |
 | `sgn-where`             | `str`      | Where the thesis was written                          |
 | `thesis-type`           | `str`      | `"bachelor"` or `"master"`                            |
-| `for-print`             | `bool`     | Asymmetric margins for double-sided printing          |
+| `for-print`             | `str`      | `"digital"`, `"single-sided"` or `"double-sided"`     |
 | `table-of-contents`     | `content`  | TOC element (default: `outline(depth: 3)`)            |
 | `codly-aliases`         | `dict`     | Extra codly language aliases, e.g. `("riscv": "asm")` |
 
