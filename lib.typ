@@ -11,7 +11,7 @@
 /// - key (label): The citation label
 /// - supplement (content): Optional supplement text
 #let ite(key, supplement: none) = {
-  show regex(".* "): none
+  show regex("[^\[\d\]]"): none
   cite(key, supplement: supplement)
 }
 
