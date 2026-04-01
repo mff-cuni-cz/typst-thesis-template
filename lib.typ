@@ -1,6 +1,6 @@
 #import "@preview/codly:1.3.0": *
-#import "@local/codly-languages:0.1.8": *
-#import "@preview/abbr:0.2.3"
+#import "@preview/codly-languages:0.1.10": *
+#import "@preview/abbr:0.3.0"
 
 #let abbr = abbr
 
