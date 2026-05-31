@@ -78,10 +78,7 @@
   // Typography
 
   set text(size: 12pt, lang: "en", weight: 400)
-  set par(justify: true, leading: 0.5em, spacing: 0.5em, first-line-indent: (
-    amount: 1.25em,
-    all: false,
-  ))
+  set par(justify: true, leading: 0.5em, spacing: 0.5em, first-line-indent: 1.25em)
 
   // Codly codeblocks
 
@@ -144,13 +141,13 @@
 
   show heading: it => {
     let (above, below, size) = if it.level == 1 {
-      (4%, 3.5%, 24pt)
+      (3.5%, 2%, 24pt)
     } else if it.level == 2 {
-      (3%, 2.5%, 15pt)
+      (3%, 1.5%, 15pt)
     } else if it.level == 3 {
-      (3%, 2.5%, 13pt)
+      (2.5%, 1.5%, 13pt)
     } else if it.level == 4 {
-      (2.5%, 2%, 12pt)
+      (2.5%, 1%, 12pt)
     } else {
       (1em, 1em, 12pt)
     }
@@ -177,6 +174,7 @@
       }
     ]
     v(below, weak: true)
+    h(1.25em)
   }
 
   // Outlines
