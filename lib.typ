@@ -78,7 +78,10 @@
   // Typography
 
   set text(size: 12pt, lang: "en", weight: 400)
-  set par(justify: true, leading: 0.5em, spacing: 0.5em, first-line-indent: 1.25em)
+  set par(justify: true, leading: 0.5em, spacing: 0.5em, first-line-indent: (
+    amount: 1.25em,
+    all: false,
+  ))
 
   // Codly codeblocks
 
@@ -139,59 +142,41 @@
   set heading(numbering: "1.1")
   show heading: set par(first-line-indent: 0pt)
 
-  show heading.where(level: 1): it => [
-    #set text(size: 24pt)
-    #set par(first-line-indent: 0pt)
-    #v(4%, weak: true)
-    #if it.numbering != none [
-      #counter(heading).display(it.numbering)
-      #h(0.6em)
-    ]
-    #it.body
-    #v(3.5%, weak: true)
-  ]
+  show heading: it => {
+    let (above, below, size) = if it.level == 1 {
+      (4%, 3.5%, 24pt)
+    } else if it.level == 2 {
+      (3%, 2.5%, 15pt)
+    } else if it.level == 3 {
+      (3%, 2.5%, 13pt)
+    } else if it.level == 4 {
+      (2.5%, 2%, 12pt)
+    } else {
+      (1em, 1em, 12pt)
+    }
 
-  show heading.where(level: 2): it => [
-    #set text(size: 15pt)
-    #set par(first-line-indent: 0pt)
-    #v(3%, weak: true)
-    #if it.numbering != none [
-      #counter(heading).display(it.numbering)
-      #h(0.6em)
+    v(above, weak: true)
+    block(breakable: false, sticky: true)[
+      #if it.level == 4 {
+        set text(size: size, style: "italic")
+        if it.numbering != none [
+          #counter(heading).display(it.numbering)
+          #h(0.6em)
+        ]
+        it.body
+      } else if it.level == 5 {
+        set par(leading: 0.3em)
+        smallcaps(strong(it.body))
+      } else {
+        set text(size: size)
+        if it.numbering != none [
+          #counter(heading).display(it.numbering)
+          #h(0.6em)
+        ]
+        it.body
+      }
     ]
-    #it.body
-    #v(2.5%, weak: true)
-  ]
-
-  show heading.where(level: 3): it => [
-    #set text(size: 13pt)
-    #set par(first-line-indent: 0pt)
-    #v(3%, weak: true)
-    #if it.numbering != none [
-      #counter(heading).display(it.numbering)
-      #h(0.6em)
-    ]
-    #it.body
-    #v(2.5%, weak: true)
-  ]
-
-  show heading.where(level: 4): it => [
-    #set text(size: 12pt, style: "italic")
-    #set par(first-line-indent: 0pt)
-    #v(2.5%, weak: true)
-    #if it.numbering != none [
-      #counter(heading).display(it.numbering)
-      #h(0.6em)
-    ]
-    #it.body
-    #v(2%, weak: true)
-  ]
-
-  show heading.where(level: 5): it => {
-    v(1em, weak: true)
-    set par(leading: 0.3em)
-    smallcaps(strong(it.body))
-    v(1em, weak: true)
+    v(below, weak: true)
   }
 
   // Outlines
