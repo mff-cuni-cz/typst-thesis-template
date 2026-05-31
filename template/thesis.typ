@@ -1,5 +1,5 @@
 // When installed as a local package, use:
-//   #import "@local/mff-thesis:0.1.0": mff-thesis, abbr, ite
+//   #import "@local/mff-thesis:0.1.1": mff-thesis, abbr, ite
 // For development directly from the repo:
 #import "../lib.typ": abbr, ite, mff-thesis
 
