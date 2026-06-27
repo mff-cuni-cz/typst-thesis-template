@@ -12,26 +12,31 @@ typst compile --root .. -f pdf --pdf-standard a-2u thesis.typ
 
 All thesis metadata is set via named parameters on `mff-thesis` in `template/thesis.typ`:
 
-| Parameter               | Type       | Description                                           |
-| ----------------------- | ---------- | ----------------------------------------------------- |
-| `title`                 | `str`      | Thesis title                                          |
-| `author`                | `str`      | Student's full name                                   |
-| `department`            | `str`      | Student's home department                             |
-| `supervisor`            | `str`      | Supervisor's name and title                           |
-| `supervisor-department` | `str`      | Supervisor's department                               |
-| `study-programme`       | `str`      | Study programme                                       |
-| `study-branch`          | `str`      | Study branch / specialization                         |
-| `year`                  | `int`      | Year of submission                                    |
-| `keywords`              | `array`    | List of keyword strings                               |
-| `abstract`              | `content`  | Thesis abstract                                       |
-| `acknowledgements`      | `content`  | Acknowledgements page (`none` to omit)                |
-| `logo`                  | `content`  | University logo, e.g. `image("logo-en.svg")`          |
-| `defense-date`          | `datetime` | Declaration date (defaults to today)                  |
-| `sgn-where`             | `str`      | Where the thesis was written                          |
-| `thesis-type`           | `str`      | `"bachelor"` or `"master"`                            |
-| `for-print`             | `str`      | `"digital"`, `"single-sided"` or `"double-sided"`     |
-| `table-of-contents`     | `content`  | TOC element (default: `outline(depth: 3)`)            |
-| `codly-aliases`         | `dict`     | Extra codly language aliases, e.g. `("riscv": "asm")` |
+| Parameter                     | Type       | Description                                           |
+| ----------------------------- | ---------- | ----------------------------------------------------- |
+| `title`                       | `str`      | Thesis title                                          |
+| `title-local`                 | `str`      | Thesis title in a local language                      |
+| `author`                      | `str`      | Student's full name                                   |
+| `department`                  | `str`      | Student's home department                             |
+| `department-local`            | `str`      | Student's home department in a local language         |
+| `supervisor`                  | `str`      | Supervisor's name and title                           |
+| `supervisor-department`       | `str`      | Supervisor's department                               |
+| `supervisor-department-local` | `str`      | Supervisor's department in a local language           |
+| `study-programme`             | `str`      | Study programme                                       |
+| `study-branch`                | `str`      | Study branch / specialization                         |
+| `year`                        | `int`      | Year of submission                                    |
+| `keywords`                    | `array`    | List of keyword strings                               |
+| `keywords-local`              | `array`    | List of keyword strings in a local language           |
+| `abstract`                    | `content`  | Thesis abstract                                       |
+| `abstract-local`              | `content`  | Thesis abstract in a local language                   |
+| `acknowledgements`            | `content`  | Acknowledgements page (`none` to omit)                |
+| `logo`                        | `content`  | University logo, e.g. `image("logo-en.svg")`          |
+| `defense-date`                | `datetime` | Declaration date (defaults to today)                  |
+| `sgn-where`                   | `str`      | Where the thesis was written                          |
+| `thesis-type`                 | `str`      | `"bachelor"` or `"master"`                            |
+| `for-print`                   | `str`      | `"digital"`, `"single-sided"` or `"double-sided"`     |
+| `table-of-contents`           | `content`  | TOC element (default: `outline(depth: 3)`)            |
+| `codly-aliases`               | `dict`     | Extra codly language aliases, e.g. `("riscv": "asm")` |
 
 ## Credits
 

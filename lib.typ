@@ -31,15 +31,20 @@
 /// - Abbreviations list: `#abbr.list()`
 ///
 /// - title (str): Thesis title
+/// - title-local (str): Thesis title in a local language
 /// - author (str): Student's full name
 /// - department (str): Student's home department
+/// - department-local (str): Student's home department in a local language
 /// - supervisor (str): Supervisor's full name and title
 /// - supervisor-department (str): Supervisor's department
+/// - supervisor-department-local (str): Supervisor's department in a local language
 /// - study-programme (str): Study programme
 /// - study-branch (str): Study branch / specialization
 /// - year (int): Year of submission
 /// - keywords (array): List of keywords (strings)
+/// - keywords-local (array): List of keywords (strings) in a local language
 /// - abstract (content): Thesis abstract
+/// - abstract-local (content): Thesis abstract in a local language
 /// - acknowledgements (content): Acknowledgements page content
 /// - logo (content): University logo, e.g. `image("logo-en.svg")`; pass `none` to omit
 /// - defense-date (datetime): Date shown on the declaration signature line; defaults to today
@@ -51,15 +56,20 @@
 /// - body (content): Thesis chapters and content
 #let mff-thesis(
   title: "Thesis Title",
+  title-local: "Název práce",
   author: "Author Name",
   department: "Department",
+  department-local: "Jméno katedry",
   supervisor: "Supervisor Name",
   supervisor-department: "Supervisor department",
+  supervisor-department-local: "Katedra vedoucího",
   study-programme: "Study programme",
   study-branch: "Study branch",
   year: 2026,
   keywords: (),
+  keywords-local: (),
   abstract: none,
+  abstract-local: none,
   acknowledgements: none,
   logo: none,
   defense-date: none,
@@ -297,8 +307,30 @@
 
   // Metadata summary
 
+  let type-local = if thesis-type == "bachelor" {
+    "bakalářské"
+  } else if thesis-type == "master" {
+    "diplomové"
+  }
+
   [
     #set par(first-line-indent: 0pt, spacing: 0.8em)
+
+    *Název práce:* #title-local
+
+    *Autor:* #author
+
+    *Katedra:* #department-local
+
+    *Vedoucí #type-local práce:* #supervisor, #supervisor-department-local
+
+    #if abstract-local != none [
+      *Abstrakt:* #abstract-local
+    ]
+
+    *Klíčová slova:* #if type(keywords-local) == array { keywords-local.join(", ") } else { keywords-local }
+
+    #v(1fr)
 
     *Title:* #title
 
@@ -313,6 +345,8 @@
     ]
 
     *Keywords:* #if type(keywords) == array { keywords.join(", ") } else { keywords }
+
+    #v(1fr)
   ]
 
   pagebreak()
