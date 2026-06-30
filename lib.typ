@@ -104,13 +104,13 @@
   // Figures
 
   show figure: it => [
-    #v(1em)
+    #v(1em, weak: true)
     #block(breakable: false)[
       #it.body
       #v(1em)
       #it.caption
     ]
-    #v(1em)
+    #v(1em, weak: true)
   ]
 
   // Quotes
